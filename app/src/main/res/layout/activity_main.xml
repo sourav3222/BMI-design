@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
+    android:background="#2E9C92"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
@@ -11,7 +12,7 @@
         android:id="@+id/imgIv"
         android:layout_width="151dp"
         android:layout_height="151dp"
-        android:src="@drawable/pic"
+        android:src="@drawable/imagess"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
