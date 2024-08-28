@@ -1,5 +1,6 @@
 package com.example.bmicalculator
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -10,6 +11,7 @@ import com.example.bmicalculator.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
 
     lateinit var binding : ActivityMainBinding
+    @SuppressLint("SuspiciousIndentation")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
  binding= ActivityMainBinding.inflate(layoutInflater)
@@ -22,7 +24,7 @@ class MainActivity : AppCompatActivity() {
 
             val bmi = weight/(height*height)
 
-            binding.BMItv.text = String.format("BMI is : %.2",bmi)
+            binding.BMItv.text = String.format("BMI is : %.2f",bmi)
 
             binding.bmiTypeTV.text = when(bmi){
                 in 1.00 ..18.4->"under Weight"
