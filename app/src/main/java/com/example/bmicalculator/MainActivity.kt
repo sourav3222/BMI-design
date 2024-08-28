@@ -5,16 +5,33 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.bmicalculator.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
+
+    lateinit var binding : ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContentView(R.layout.activity_main)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
+ binding= ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        binding.button.setOnClickListener {
+
+            val height = binding.heightEt.text.toString().toDouble()/100
+            val weight = binding.weightEt.text.toString().toDouble()
+
+            val bmi = weight/(height*height)
+
+            binding.BMItv.text = String.format("BMI is : %.2",bmi)
+
+            binding.bmiTypeTV.text = when(bmi){
+                in 1.00 ..18.4->"under Weight"
+                in 18.5 .. 25.5->"Normal"
+                in 25.6 .. 30.50->"Over Weight"
+                in 30.6 .. 50.5->"Obesity"
+                else->"He/she  is No More"
+            }
         }
+
     }
 }
